@@ -17,10 +17,8 @@ A lightweight, CLI-based asymmetric file encryption tool implemented in C using 
 
 This utility implements core RSA operations via OpenSSL's big-integer engine:
 
-[ Input Stream (in) ] ---> [ Read Bytes ] ---> [ BIGNUM Conversion ]
-                                                     |
-                                                     v
-[ Output Stream (out) ] <--- [ Write Bytes ] <--- [ BN_mod_exp ]
+[ Input Stream (in) ] ---> [ Read Bytes ] ---> [ BIGNUM Conversion ] ->
+[ BN_mod_exp ] ---> [ Write Bytes ] ---> [ Output Stream (out) ]
 
 * **Encryption:** Converts plaintext blocks into big integers and computes C = M^e mod n.
 * **Decryption:** Computes M = C^d mod n using the loaded private exponent (d) and shared modulus (n).
